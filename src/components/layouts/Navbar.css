@@ -1,0 +1,25 @@
+nav {
+    display: flex;
+    overflow: hidden;
+    background-color:#1D3557 ;
+}
+
+nav div.navItem {
+    padding: 10px;
+}
+
+
+nav div.navItem:hover {
+    background:  #457B9D;
+}
+
+nav div.navItem a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav div.navItem a.navSelected {
+    color:#A8DADC;
+
+    
+}

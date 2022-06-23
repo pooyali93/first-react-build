@@ -1,0 +1,13 @@
+
+footer {
+    height: 50px;
+    display: grid;
+    place-items:center;
+    background: #A8DADC;
+}
+
+footer a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #1D3557;
+}
