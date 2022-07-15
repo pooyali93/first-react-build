@@ -3,16 +3,21 @@ import './ModuleList.css';
 
 
 function ModuleList(props) {
-
     return (
-        <ul className='list'>
-        {props.modules.map(module => <ModuleItem key={module.ModuleID}  ModuleID={module.ModuleID} ModuleImage={module.ModuleImage} ModuleName={module.ModuleName} ModuleCode={module.ModuleCode} ModuleLevel={module.ModuleLevel} />)}
-
-        </ul>
-
-    )
-
-
+        <div className='list'>
+            {
+                props.modules.map(module => 
+                    <ModuleItem 
+                        key={module.ModuleID}  
+                        module={module}
+                        onDelete={props.onDelete}
+                        onFavourite={props.onFavourite}
+                        onUnfavourite={props.onUnfavourite}
+                    />
+                )
+            }
+        </div>
+    );
 }
 
 export default ModuleList;
