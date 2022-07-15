@@ -1,30 +1,29 @@
 import Card from './Card';
 import  './ModuleItem.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FaCheck, FaEdit, FaHeart, FaTrash} from 'react-icons/fa';
 
-function ModuleItem(props) {
+// function
+function ModuleItem (props) {
     return (
-    <li className="item">
-        <Card>
-        <div className="image">
-            <img src={props.ModuleImage} alt={props.ModuleName} />
+        <div className="item">
+            <Card>
+                <div className="image">
+                    <img src={props.module.ModuleImage} alt={props.module.ModuleName} />
+                </div>
+                <div className="content">
+                    <h4>{props.module.ModuleName}</h4>
+                    <h5>({props.module.ModuleCode})</h5>
+                    <p>Level {props.module.ModuleLevel}</p>
+                </div>
+        
+                <div className="actions">
+                    <button onClick={() => props.onFavourite(props.module.ModuleID)}><FaCheck /></button>
+                    <button><FaEdit /></button>
+                    <button onClick={() => props.onDelete(props.module.ModuleID)} ><FaTrash /></button>
+                </div>
+            </Card>
         </div>
-        <div className="content">
-            <h4>{props.ModuleName}</h4>
-            <h5>({props.ModuleCode})</h5>
-            <p>Level {props.ModuleLevel}</p>
-        </div>
-
-        <div className="actions">
-            <button><FontAwesomeIcon icon={faCheck} /></button>
-            <button><FontAwesomeIcon icon={faEdit} /></button>
-            <button><FontAwesomeIcon icon={faTrash} /></button>
-        </div>
-        </Card>
-    </li>
-    )
-
+    );
 }
 
 

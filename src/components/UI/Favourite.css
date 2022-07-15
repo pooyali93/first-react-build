@@ -1,0 +1,15 @@
+div.favouriteIcon {
+    position: relative;
+}
+
+div.favouriteIcon > div.favourite {
+    position:absolute;
+    top:5px; right: 5px;
+
+}
+
+div.favouriteIcon > div.favourite div.FaHeart{
+    width: 35px;
+    height: 35px;
+
+}
