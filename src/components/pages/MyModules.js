@@ -13,41 +13,24 @@ function MyModules() {
 
     const handleFavourite = (id) => {
         setModules (modules.map((module) => (
-            module.ModuleID === id ? { ...module, isSubscribed:true } : module
+            module.ModuleID === id ? { ...module, isFavourite:true } : module
         ))
         )
-
          console.log('Favourited', id);
     }
 
     const handleUnfavourite = (id) => {
         setModules (modules.map((module) => (
-            module.ModuleID === id ? { ...module, isSubscribed:false } : module
+            module.ModuleID === id ? { ...module, isFavourite:false } : module
         ))
         )
-
-         console.log('unFavourited', id);
+        // console.log('unFavourited', id);
     }
-
     
-       
-
-       // setFavorites(favorites.filter((module) => module.ModuleID !== id));
-       // setFavorites([...favorites, modules.find(module => module.ModuleID === id)]);
-        //if(!copy) setModules(modules.filter(module => module.ModuleID !== id));
-       
-
-        //console.log('delete', id);
-    
-
     const handleDelete = (id) => {
         setModules(modules.filter((module) => module.ModuleID !== id));
         //console.log('delete', id);
     }
-
-
-
-
 
     // View ---------
     return (

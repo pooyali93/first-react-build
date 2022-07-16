@@ -9,18 +9,16 @@ Favourite.propTypes = {
     unFavourite:PropTypes.func
 };
 
-
-function Favourite({children, isFavourite, }) {
+export default function Favourite({isFavourite, unFavourite }) {
   return (
     <div className='favouriteIcon'>
         {
             isFavourite &&
-            <div className='favourite' ><FaHeart/>
+            <div className='favourite' onClick={unFavourite}>
+              <FaHeart/>
             </div>            
         }
-        {children}
+        
     </div>
   );
 }
-
-export default Favourite
