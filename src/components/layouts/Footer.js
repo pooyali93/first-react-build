@@ -8,7 +8,7 @@ function Footer() {
     // View ---------
     return (
         <footer>
-            <a href=""> All Rights Reserved 2022
+            <a href="/"> All Rights Reserved 2022
             </a>
         </footer>
     )

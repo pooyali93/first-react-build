@@ -2,7 +2,7 @@ import Card from './Card';
 import  './ModuleItem.css';
 import { FaCheck, FaEdit, FaTrash} from 'react-icons/fa';
 import Favourite from './Favourite';
-import Tooltips from './ToolTips';
+//import Tooltips from './ToolTips';
 
 
 // function

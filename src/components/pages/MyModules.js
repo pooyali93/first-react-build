@@ -1,12 +1,15 @@
 import { useState } from "react";
 import ModuleList from "../UI/ModuleList";
 import listOfModules from "../../data/modules";
-import { FaList} from 'react-icons/fa';
+import { FaList, FaPlus} from 'react-icons/fa';
+import './MyModules.css'
+import Modal from "../UI/Modal";
 
-function MyModules() {
+function MyModules({title}) {
     // Properties ---------
     //  Hooks ---------
     const [modules, setModules] = useState(listOfModules);
+    const [showModal, setModal] = useState(false);
    // const [favorites, setFavorites] = useState([]);
     // Contect ---------
     // Methods ---------
@@ -32,14 +35,31 @@ function MyModules() {
         //console.log('delete', id);
     }
 
+    const handleModal =() => {
+        setModal(true);
+    }
+
+    const handleConfirm =(e) => {
+        e.preventDefault();
+
+        setModal(false);
+    }
+
+
+
     // View ---------
     return (
         <section>
             <h1>My Modules</h1>
-
-            <div className="listOfFavourite"><FaList/></div>
+            <div className="listOfFavourite">
+                <div className="actions">
+                    <button><FaList/></button>
+                    <button  onClick={handleModal} ><FaPlus/> Add</button>
+                </div>
+            </div>
             <ModuleList modules={modules} onDelete={handleDelete} onFavourite={handleFavourite} onUnfavourite={handleUnfavourite} />
-              
+            {showModal && <Modal  onConfirm={handleConfirm} onCancel={handleConfirm}/> }
+            
         </section> 
     )
 }
