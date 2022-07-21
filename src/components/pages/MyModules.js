@@ -5,7 +5,7 @@ import { FaList, FaPlus} from 'react-icons/fa';
 import './MyModules.css'
 import Modal from "../UI/Modal";
 
-function MyModules({title}) {
+function MyModules() {
     // Properties ---------
     //  Hooks ---------
     const [modules, setModules] = useState(listOfModules);
