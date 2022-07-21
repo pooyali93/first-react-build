@@ -5,7 +5,6 @@ import Favourite from './Favourite';
 //import Tooltips from './ToolTips';
 
 
-// function
 function ModuleItem (props) {
     return (
         <div className="item">
@@ -14,6 +13,7 @@ function ModuleItem (props) {
                     isFavourite={props.module.isFavourite}
                     unFavourite={() => props.onUnfavourite(props.module.ModuleID)}
                  />
+
                 <div className="image">
                     <img src={props.module.ModuleImage} alt={props.module.ModuleName} />
                 </div>

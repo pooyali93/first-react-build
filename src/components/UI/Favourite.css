@@ -13,4 +13,12 @@ div.favouriteIcon > div.favourite {
 div.favouriteIcon > div.favourite div.FaHeart{
     width: 40px;
     height: 40px;
+    position:absolute;
+    top:5px; right: 5px;
+
+}
+
+div.favouriteIcon > div.favourite div.FaHeart{
+    width: 35px;
+    height: 35px;
 }

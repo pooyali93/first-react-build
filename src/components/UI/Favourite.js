@@ -10,6 +10,8 @@ Favourite.propTypes = {
 };
 
 export default function Favourite({isFavourite, unFavourite }) {
+
+function Favourite({children, isFavourite, }) {
   return (
     <div className='favouriteIcon'>
         {
@@ -19,6 +21,13 @@ export default function Favourite({isFavourite, unFavourite }) {
             </div>            
         }
         
+    </div>
+  );
+}
+            <div className='favourite' ><FaHeart/>
+            </div>            
+        }
+        {children}
     </div>
   );
 }
