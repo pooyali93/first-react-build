@@ -1,0 +1,12 @@
+div.listOfFavourite {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+button.fa-btn-plus {
+  padding: 8px;
+  background-color: brown;
+}

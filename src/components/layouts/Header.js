@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import './Header.css'
 
-function Header() {
+function Header(props) {
     // Properties ---------
     //  Hooks ---------
     // Contect ---------
@@ -11,7 +11,7 @@ function Header() {
     return (
         <header>
             <Link to="/">
-            <img src="https://img.icons8.com/small/50/undefined/gender-neutral-user.png"></img>
+                <img src="https://img.icons8.com/small/50/undefined/gender-neutral-user.png" alt="Logo"></img>
             </Link>
             <Link to="/">
              <h1>React First App</h1>

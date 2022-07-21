@@ -1,0 +1,46 @@
+div.Modal {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    background-color: white;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+    position: fixed;
+    top: 20vh;
+    left: calc(50% - 15rem);
+  }
+
+  main.ModalPanel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  main.ModalPanel header {
+    width: 100%;
+    height: 50px;
+    padding: 10px 50px;
+    color: White;
+    font-size: 100%;
+    border-radius: 5px 5px 0 0;;
+    background-color: #edafb8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  main.ModalPanel main.ModalCenter {
+    width: 100%;
+    padding: 20px;
+    color: Black;
+    font-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  main.ModalPanel main.ModalCenter > p {
+    text-align: center;
+  }
