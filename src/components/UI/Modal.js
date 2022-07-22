@@ -1,11 +1,13 @@
 import './Modal.css';
 import ModuleForm from './ModuleForm';
 
-export default function Modal({ title, children, onClick, onCancel}) {
+export default function Modal({ title, children, onClick, onConfirm, onCancel}) {
   return (
         <div>
+          
             <main className="ModalPanel">
-                <ModuleForm onClick={onClick} onCancel={onCancel}/>
+            <header>Modal Header</header>
+                <ModuleForm onClick={onClick} onConfirm={onConfirm} onCancel={onCancel}/>
             </main>
         </div>
   );

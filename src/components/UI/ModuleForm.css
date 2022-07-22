@@ -18,8 +18,12 @@
     font: inherit;
     border-radius: 4px;
     border: 1px solid #ccc;
-    padding: 0.25rem;
+    padding: 0.30rem;
     width: 100%;
+  }
+
+  .form-control input:hover {
+    border: 1px solid rgb(175, 173, 173)(0, 0%, 20%);
   }
   
   .actions {

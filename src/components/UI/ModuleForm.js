@@ -1,6 +1,7 @@
 import Card from "./Card";
 import './ModuleForm.css'
 import { useRef } from "react";
+import Select from 'react-select'
 
 export default function ModuleForm(props) { 
 
@@ -29,31 +30,39 @@ export default function ModuleForm(props) {
             ModuleLeader:  inputModuleLeader
         };
 
-        console.log(moudleData);
+        props.onConfirm(moudleData);
         
     }
+
+    const selectMoudleLevel = [
+        { value: '4', label: '4' },
+        { value: '5', label: '5' },
+        { value: '6', label: '6'}
+      ]
+
+    const selectMoudleLeader = [
+        { value: 'Graeme', label: 'Graeme' },
+        { value: 'Ahmed', label: 'Ahmed' },
+        { value: 'David', label: 'David'}
+      ]
   return (
     <Card>
         <form className='add-form' onSubmit={handleSubmit}>
             <div className='form-control'>
                 <label htmlFor="ModuleName">Module Name</label>
-                <input type='text'  id="ModuleName" ref={moduleNameInputRef}></input>
-            </div>
-            <div className='form-control'>
+                <input type='text'  placeholder="Enter Module Name" id="ModuleName" ref={moduleNameInputRef}></input>
+
                 <label htmlFor="ModuleImage">Module Image</label>
-                <input type='url'  id="ModuleImage" ref={moduleImageInputRef}></input>
-            </div>
-            <div className='form-control'>
+                <input type='url' placeholder="Enter an Img URL" id="ModuleImage" ref={moduleImageInputRef}></input>
+           
                 <label htmlFor="ModuleCode">Module Code</label>
-                <input type='text'  id="ModuleCode" ref={moduleCodeInputRef}></input>
-            </div>
-            <div className='form-control'>
+                <input type='text' placeholder="Enter Module Code" id="ModuleCode" ref={moduleCodeInputRef}></input>
+
                 <label htmlFor="ModuleLevel">Module Level</label>
-                <input type='number'  id="ModuleLevel" ref={moduleLevelInputRef}></input>
-            </div>
-            <div className='form-control'>
+                <Select options={selectMoudleLevel} ref={moduleLevelInputRef} />
+            
                 <label htmlFor="ModuleLeader">Module Leader</label>
-                <input type='text'  id="ModuleLeader" ref={moduleLeaderInputRef}></input>
+                <Select options={selectMoudleLeader} ref={moduleLeaderInputRef} />
             </div>
             <div className="actions">
                 <button type="submit" className="cancel" onClick={props.onCancel}>Cancel</button>
