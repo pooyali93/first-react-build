@@ -33,7 +33,7 @@ export default function ModuleForm(props) {
         props.onConfirm(moudleData);
         
     }
-
+/*
     const selectMoudleLevel = [
         { value: '4', label: '4' },
         { value: '5', label: '5' },
@@ -45,6 +45,7 @@ export default function ModuleForm(props) {
         { value: 'Ahmed', label: 'Ahmed' },
         { value: 'David', label: 'David'}
       ]
+      */
   return (
     <Card>
         <form className='add-form' onSubmit={handleSubmit}>
@@ -59,10 +60,12 @@ export default function ModuleForm(props) {
                 <input type='text' placeholder="Enter Module Code" id="ModuleCode" ref={moduleCodeInputRef}></input>
 
                 <label htmlFor="ModuleLevel">Module Level</label>
-                <Select options={selectMoudleLevel} ref={moduleLevelInputRef} />
+                <input type='number' placeholder="Enter Moedul Level" id="ModuleCode" ref={moduleLevelInputRef}></input>
+             
             
                 <label htmlFor="ModuleLeader">Module Leader</label>
-                <Select options={selectMoudleLeader} ref={moduleLeaderInputRef} />
+                <input type='text' placeholder="Enter Module Leader" id="ModuleLeader" ref={moduleLeaderInputRef}></input>
+             
             </div>
             <div className="actions">
                 <button type="submit" className="cancel" onClick={props.onCancel}>Cancel</button>

@@ -40,11 +40,13 @@ function MyModules() {
         setModal(true);
     }
 
-    const handleConfirm =(newModule) => {
+    const handleConfirm =(module) => {
 
+        const id = Math.floor(Math.random() * 10000) + 1;
+        const newModule =  {id, ...module};
         setModal(false);
 
-        setModules({...modules, newModule})
+        setModules([...modules, newModule])
     }
 
     
@@ -59,7 +61,7 @@ function MyModules() {
                 </div>
             </div>
             <ModuleList modules={modules} onDelete={handleDelete} onFavourite={handleFavourite} onUnfavourite={handleUnfavourite} />
-            {showModal && <Modal  onConfirm={handleConfirm} onCancel={handleConfirm}/> }
+            {showModal && <Modal  onConfirm={handleConfirm} /> }
             
         </section> 
     )
