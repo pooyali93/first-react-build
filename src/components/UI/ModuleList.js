@@ -13,6 +13,7 @@ function ModuleList(props) {
                         onDelete={props.onDelete}
                         onFavourite={props.onFavourite}
                         onUnfavourite={props.onUnfavourite}
+                    
                     />
                 )
             }

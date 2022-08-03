@@ -1,28 +1,51 @@
 import Card from "./Card";
 import './ModuleForm.css'
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Select from 'react-select'
 
-export default function ModuleForm(props) { 
+export default function ModuleForm({props}) { 
 
-    const moduleNameInputRef = useRef();
-    const moduleImageInputRef = useRef();
-    const moduleCodeInputRef = useRef();
-    const moduleLevelInputRef = useRef();
-    const moduleLeaderInputRef = useRef(); 
+    const [ text, setText] = useState ('')
+    const [ url, setUrl] = useState ('')
+    const [ moduleCode, setModuleCode] = useState ('')
+    const [ moduleLevel, setModuleLevel] = useState ('')
+    const [ moduleLeader, setModuleLeader] = useState ('')
+
+   
+  
 
 
     function handleSubmit(event) {
     
         event.preventDefault();
 
+        if(!text) {
+            alert('Please Enter Module Name')
+            return
+        }
+
+        props.onAdd({text, url, moduleCode, moduleLevel, moduleLeader})
+
+        setText('')
+        setUrl('')
+        setModuleCode('')
+        setModuleLevel('')
+        setModuleLeader('')
+     }
+ /*
+
+      const moduleNameInputRef = useRef();
+    const moduleImageInputRef = useRef();
+    const moduleCodeInputRef = useRef();
+    const moduleLevelInputRef = useRef();
+    const moduleLeaderInputRef = useRef(); 
         const inputModuleName = moduleNameInputRef.current.value;
         const inputModuleImage = moduleImageInputRef.current.value;
         const inputModuleCode = moduleCodeInputRef.current.value;
         const inputModuleLevel = moduleLevelInputRef.current.value;
         const inputModuleLeader = moduleLeaderInputRef.current.value;
 
-        const moudleData = {
+        const moduleData = {
             ModuleName:  inputModuleName,
             ModuleImage:  inputModuleImage,
             ModuleCode:  inputModuleCode,
@@ -30,17 +53,17 @@ export default function ModuleForm(props) {
             ModuleLeader:  inputModuleLeader
         };
 
-        props.onConfirm(moudleData);
+        props.onConfirm(moduleData);
         
     }
-/*
-    const selectMoudleLevel = [
+
+    const selectModuleLevel = [
         { value: '4', label: '4' },
         { value: '5', label: '5' },
         { value: '6', label: '6'}
       ]
 
-    const selectMoudleLeader = [
+    const selectModuleLeader = [
         { value: 'Graeme', label: 'Graeme' },
         { value: 'Ahmed', label: 'Ahmed' },
         { value: 'David', label: 'David'}
@@ -50,26 +73,26 @@ export default function ModuleForm(props) {
     <Card>
         <form className='add-form' onSubmit={handleSubmit}>
             <div className='form-control'>
-                <label htmlFor="ModuleName">Module Name</label>
-                <input type='text'  placeholder="Enter Module Name" id="ModuleName" ref={moduleNameInputRef}></input>
+                <label>Module Name</label>
+                <input type='text'  placeholder="Enter Module Name" value={text} onChange={(event) => setText(event.target.value)}></input>
 
-                <label htmlFor="ModuleImage">Module Image</label>
-                <input type='url' placeholder="Enter an Img URL" id="ModuleImage" ref={moduleImageInputRef}></input>
+                <label >Module Image</label>
+                <input type='url' placeholder="Enter an Img URL"            value={url} onChange={(event) => setUrl(event.target.value)}></input>
            
-                <label htmlFor="ModuleCode">Module Code</label>
-                <input type='text' placeholder="Enter Module Code" id="ModuleCode" ref={moduleCodeInputRef}></input>
+                <label >Module Code</label>
+                <input type='text' placeholder="Enter Module Code" value={moduleCode} onChange={(event) => setModuleCode(event.target.value)} ></input>
 
-                <label htmlFor="ModuleLevel">Module Level</label>
-                <input type='number' placeholder="Enter Moedul Level" id="ModuleCode" ref={moduleLevelInputRef}></input>
+                <label >Module Level</label>
+                <input type='number' placeholder="Enter Moedul Level" value={moduleLevel} onChange={(event) => setModuleLevel(event.target.value)} ></input>
              
             
-                <label htmlFor="ModuleLeader">Module Leader</label>
-                <input type='text' placeholder="Enter Module Leader" id="ModuleLeader" ref={moduleLeaderInputRef}></input>
+                <label>Module Leader</label>
+                <input type='text' placeholder="Enter Module Leader" value={moduleLeader} onChange={(event) => setModuleLeader(event.target.value)} ></input>
              
             </div>
             <div className="actions">
-                <button type="submit" className="cancel" onClick={props.onCancel}>Cancel</button>
-                <button type="submit" onClick={props.onClick}>Add New Module</button>
+                <button type="submit" className="cancel" >Cancel</button>
+                <button type="submit" onClick={props.onConfirm}>Add New Module</button>
             </div>
 
         </form>
