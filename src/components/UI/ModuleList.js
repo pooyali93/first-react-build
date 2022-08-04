@@ -11,8 +11,10 @@ function ModuleList(props) {
                         key={module.ModuleID}  
                         module={module}
                         onDelete={props.onDelete}
+                        onChange={props.onChange}
                         onFavourite={props.onFavourite}
                         onUnfavourite={props.onUnfavourite}
+                    
                     />
                 )
             }

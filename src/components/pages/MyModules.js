@@ -4,15 +4,18 @@ import listOfModules from "../../data/modules";
 import { FaList, FaPlus} from 'react-icons/fa';
 import './MyModules.css'
 import Modal from "../UI/Modal";
-import { FaList} from 'react-icons/fa';
+import AddModuleForm from "../UI/AddModuleForm";
+
+
 
 function MyModules() {
     // Properties ---------
     //  Hooks ---------
     const [modules, setModules] = useState(listOfModules);
-    const [showModal, setModal] = useState(false);
+    const [showModalForm, setShowModalForm] = useState(false);
+  //  const [showModal, setShowModal] = useState(false);
+    
 
-   // const [favorites, setFavorites] = useState([]);
     // Contect ---------
     // Methods ---------
 
@@ -21,11 +24,7 @@ function MyModules() {
             module.ModuleID === id ? { ...module, isFavourite:true } : module
         ))
         )
-
-            module.ModuleID === id ? { ...module, isSubscribed:true } : module
-        ))
-        )
-         console.log('Favourited', id);
+         //console.log('Favourited', id);
     }
 
     const handleUnfavourite = (id) => {
@@ -35,57 +34,59 @@ function MyModules() {
         )
         // console.log('unFavourited', id);
     }
-    
-            module.ModuleID === id ? { ...module, isSubscribed:false } : module
-        ))
-        )
 
-         console.log('unFavourited', id);
+    const handleUpdate =(id, newValue) => {
+        setModules(modules.map((module) => (
+            module.ModuleID === id ? {...module, newValue }: module
+            ))
+
+           
+        ); 
+        
+        setShowModalForm(true)
     }
 
-    
-       
-
-       // setFavorites(favorites.filter((module) => module.ModuleID !== id));
-       // setFavorites([...favorites, modules.find(module => module.ModuleID === id)]);
-        //if(!copy) setModules(modules.filter(module => module.ModuleID !== id));
-       
-
-        //console.log('delete', id);
     
     const handleDelete = (id) => {
         setModules(modules.filter((module) => module.ModuleID !== id));
         //console.log('delete', id);
     }
 
+
     const handleModal =() => {
-        setModal(true);
+        setShowModalForm(prev => !prev) 
     }
 
-    const handleConfirm =(e) => {
-        e.preventDefault();
 
-        setModal(false);
+    const handleAddModule = (newModule) => {
+        newModule.ModuleID = Math.floor(Math.random()*10000) + 1
+        setModules([...modules, newModule]);
     }
 
-    
+   
+   
     // View ---------
     return (
         <section>
             <h1>My Modules</h1>
+            
             <div className="listOfFavourite">
                 <div className="actions">
                     <button><FaList/></button>
                     <button  onClick={handleModal} ><FaPlus/> Add</button>
                 </div>
             </div>
-            <ModuleList modules={modules} onDelete={handleDelete} onFavourite={handleFavourite} onUnfavourite={handleUnfavourite} />
-            {showModal && <Modal  onConfirm={handleConfirm} onCancel={handleConfirm}/> }
+           {showModalForm ? <AddModuleForm onAdd={handleAddModule} onCancel={handleModal} />: null }
+
+            <ModuleList modules={modules} onDelete={handleDelete} onChange={handleUpdate} onFavourite={handleFavourite} onUnfavourite={handleUnfavourite} />
+
+         <Modal />
+
             
-            <div className="listOfFavourite"><FaList/></div>
-            <ModuleList modules={modules} onDelete={handleDelete} onFavourite={handleFavourite} onUnfavourite={handleUnfavourite} />
         </section> 
     )
 }
 
 export default MyModules;
+
+
