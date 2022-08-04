@@ -25,7 +25,7 @@ function ModuleItem (props) {
         
                 <div className="actions">
                     <button onClick={() => props.onFavourite(props.module.ModuleID)}><FaCheck /></button>
-                    <button><FaEdit /></button>
+                    <button onClick={() => props.onChange(props.module.ModuleID)}><FaEdit /></button>
                     <button onClick={() => props.onDelete(props.module.ModuleID)} ><FaTrash /></button>
                 </div>
             </Card>

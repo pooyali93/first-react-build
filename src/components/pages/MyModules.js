@@ -4,12 +4,16 @@ import listOfModules from "../../data/modules";
 import { FaList, FaPlus} from 'react-icons/fa';
 import './MyModules.css'
 import Modal from "../UI/Modal";
+import AddModuleForm from "../UI/AddModuleForm";
+
+
 
 function MyModules() {
     // Properties ---------
     //  Hooks ---------
     const [modules, setModules] = useState(listOfModules);
-    const [showModal, setModal] = useState(false);
+    const [showModalForm, setShowModalForm] = useState(false);
+  //  const [showModal, setShowModal] = useState(false);
     
 
     // Contect ---------
@@ -30,6 +34,18 @@ function MyModules() {
         )
         // console.log('unFavourited', id);
     }
+
+    const handleUpdate =(id, newValue) => {
+        setModules(modules.map((module) => (
+            module.ModuleID === id ? {...module, newValue }: module
+            ))
+
+           
+        ); 
+        
+        setShowModalForm(true)
+    }
+
     
     const handleDelete = (id) => {
         setModules(modules.filter((module) => module.ModuleID !== id));
@@ -38,36 +54,33 @@ function MyModules() {
 
 
     const handleModal =() => {
-        setModal(true);
+        setShowModalForm(prev => !prev) 
     }
 
 
-    const handleSubmit =(newModule) => {
-
-        setModal(false);
-
-        setModules({...modules, newModule})
+    const handleAddModule = (newModule) => {
+        newModule.ModuleID = Math.floor(Math.random()*10000) + 1
+        setModules([...modules, newModule]);
     }
 
-    const handleCancel =() => {
-
-        setModal(false);
-    }
-
-    
+   
+   
     // View ---------
     return (
         <section>
             <h1>My Modules</h1>
+            
             <div className="listOfFavourite">
                 <div className="actions">
                     <button><FaList/></button>
                     <button  onClick={handleModal} ><FaPlus/> Add</button>
                 </div>
             </div>
-            <ModuleList modules={modules} onDelete={handleDelete} onFavourite={handleFavourite} onUnfavourite={handleUnfavourite} />
+           {showModalForm ? <AddModuleForm onAdd={handleAddModule} onCancel={handleModal} />: null }
 
-            {showModal && <Modal  onAdd={handleSubmit} onCancel={handleCancel}/> }
+            <ModuleList modules={modules} onDelete={handleDelete} onChange={handleUpdate} onFavourite={handleFavourite} onUnfavourite={handleUnfavourite} />
+
+         <Modal />
 
             
         </section> 
