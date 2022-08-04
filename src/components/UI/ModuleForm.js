@@ -1,44 +1,20 @@
 import Card from "./Card";
 import './ModuleForm.css'
-import { useRef, useState } from "react";
-import Select from 'react-select'
+import { useRef } from "react";
 
-export default function ModuleForm({props}) { 
+export default function ModuleForm(props) { 
 
-    const [ text, setText] = useState ('')
-    const [ url, setUrl] = useState ('')
-    const [ moduleCode, setModuleCode] = useState ('')
-    const [ moduleLevel, setModuleLevel] = useState ('')
-    const [ moduleLeader, setModuleLeader] = useState ('')
-
-   
-  
+    const moduleNameInputRef = useRef();
+    const moduleImageInputRef = useRef();
+    const moduleCodeInputRef = useRef();
+    const moduleLevelInputRef = useRef();
+    const moduleLeaderInputRef = useRef(); 
 
 
     function handleSubmit(event) {
     
         event.preventDefault();
 
-        if(!text) {
-            alert('Please Enter Module Name')
-            return
-        }
-
-        props.onAdd({text, url, moduleCode, moduleLevel, moduleLeader})
-
-        setText('')
-        setUrl('')
-        setModuleCode('')
-        setModuleLevel('')
-        setModuleLeader('')
-     }
- /*
-
-      const moduleNameInputRef = useRef();
-    const moduleImageInputRef = useRef();
-    const moduleCodeInputRef = useRef();
-    const moduleLevelInputRef = useRef();
-    const moduleLeaderInputRef = useRef(); 
         const inputModuleName = moduleNameInputRef.current.value;
         const inputModuleImage = moduleImageInputRef.current.value;
         const inputModuleCode = moduleCodeInputRef.current.value;
@@ -56,42 +32,31 @@ export default function ModuleForm({props}) {
         props.onConfirm(moduleData);
         
     }
-
-    const selectModuleLevel = [
-        { value: '4', label: '4' },
-        { value: '5', label: '5' },
-        { value: '6', label: '6'}
-      ]
-
-    const selectModuleLeader = [
-        { value: 'Graeme', label: 'Graeme' },
-        { value: 'Ahmed', label: 'Ahmed' },
-        { value: 'David', label: 'David'}
-      ]
-      */
   return (
     <Card>
         <form className='add-form' onSubmit={handleSubmit}>
             <div className='form-control'>
-                <label>Module Name</label>
-                <input type='text'  placeholder="Enter Module Name" value={text} onChange={(event) => setText(event.target.value)}></input>
-
-                <label >Module Image</label>
-                <input type='url' placeholder="Enter an Img URL"            value={url} onChange={(event) => setUrl(event.target.value)}></input>
-           
-                <label >Module Code</label>
-                <input type='text' placeholder="Enter Module Code" value={moduleCode} onChange={(event) => setModuleCode(event.target.value)} ></input>
-
-                <label >Module Level</label>
-                <input type='number' placeholder="Enter Moedul Level" value={moduleLevel} onChange={(event) => setModuleLevel(event.target.value)} ></input>
-             
-            
-                <label>Module Leader</label>
-                <input type='text' placeholder="Enter Module Leader" value={moduleLeader} onChange={(event) => setModuleLeader(event.target.value)} ></input>
-             
+                <label htmlFor="ModuleName">Module Name</label>
+                <input type='text'  id="ModuleName" ref={moduleNameInputRef}></input>
+            </div>
+            <div className='form-control'>
+                <label htmlFor="ModuleImage">Module Image</label>
+                <input type='url'  id="ModuleImage" ref={moduleImageInputRef}></input>
+            </div>
+            <div className='form-control'>
+                <label htmlFor="ModuleCode">Module Code</label>
+                <input type='text'  id="ModuleCode" ref={moduleCodeInputRef}></input>
+            </div>
+            <div className='form-control'>
+                <label htmlFor="ModuleLevel">Module Level</label>
+                <input type='number'  id="ModuleLevel" ref={moduleLevelInputRef}></input>
+            </div>
+            <div className='form-control'>
+                <label htmlFor="ModuleLeader">Module Leader</label>
+                <input type='text'  id="ModuleLeader" ref={moduleLeaderInputRef}></input>
             </div>
             <div className="actions">
-                <button type="submit" className="cancel" >Cancel</button>
+                <button type="submit" className="cancel" onClick={props.onCancel}>Cancel</button>
                 <button type="submit" onClick={props.onConfirm}>Add New Module</button>
             </div>
 

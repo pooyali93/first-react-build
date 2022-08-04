@@ -36,23 +36,22 @@ function MyModules() {
         //console.log('delete', id);
     }
 
-    // add New Modules
-
-    
-    const handleAddModule =(module) => {
-        console.log(module);
-    }
-
 
     const handleModal =() => {
         setModal(true);
     }
 
-    const handleConfirm =() => {
+
+    const handleSubmit =(newModule) => {
 
         setModal(false);
 
-       // setModules({...modules, newModule})
+        setModules({...modules, newModule})
+    }
+
+    const handleCancel =() => {
+
+        setModal(false);
     }
 
     
@@ -68,10 +67,13 @@ function MyModules() {
             </div>
             <ModuleList modules={modules} onDelete={handleDelete} onFavourite={handleFavourite} onUnfavourite={handleUnfavourite} />
 
-            {showModal && <Modal  onAdd={handleAddModule} onCancel={handleConfirm}/> }
+            {showModal && <Modal  onAdd={handleSubmit} onCancel={handleCancel}/> }
+
             
         </section> 
     )
 }
 
 export default MyModules;
+
+
