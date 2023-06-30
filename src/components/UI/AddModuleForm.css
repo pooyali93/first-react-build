@@ -29,24 +29,3 @@ form.add-form {
 .form-control input:focus {
     border: 1px solid blue;
   }
-.actions {
-    margin-top: 1rem;
-    text-align: right;
-  }
-
-  .actions button {
-    font: inherit;
-    cursor: pointer;
-    color: #1d3557;
-    border: 1px solid #dedede;
-    background-color: transparent;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    margin: 5px;
-  }
-  
-  .actions button:hover,
-  .actions button:active {
-    background-color: #a8dadc;
-  }
-  

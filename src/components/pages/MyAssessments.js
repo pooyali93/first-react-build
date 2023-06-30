@@ -1,14 +1,19 @@
+import Panel from "../UI/Panel";
+
 function MyAssessments() {
-    // Properties ---------
-    //  Hooks ---------
-    // Contect ---------
-    // Methods ---------
-    // View ---------
-    return (
-
-        <h1>My Assessments</h1>
-    )
-
+  // Properties ---------
+  //  Hooks ---------
+  // Contect ---------
+  // Methods ---------
+  // View ---------
+  return (
+    <>
+      <Panel
+        title="Item 1"
+      >
+      </Panel>
+    </>
+  );
 }
 
 export default MyAssessments;

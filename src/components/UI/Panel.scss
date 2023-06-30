@@ -1,0 +1,45 @@
+.panelWrapper {
+  padding: 0 10px;
+
+  .innerPanel {
+    background: #fff;
+    margin-bottom: 5px;
+    padding: 22px;
+    border-radius: 5px;
+    border: 1px solid #d0d7de;
+    box-shadow: 0 4px 2px -2px #d9d9d9;
+    height: 70px;
+
+    .panelTitle {
+      color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+
+      h2 {
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+
+    .panelContent {
+      color: black;
+      height: 100%;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+      background: #fff;
+      padding: 0;
+      margin: -6px 0 10px 0px;
+
+      .show {
+        height: auto;
+        background: red;
+        max-height: 9999px;
+        transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+      }
+    }
+  }
+}

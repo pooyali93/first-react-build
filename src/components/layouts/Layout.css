@@ -3,16 +3,14 @@ h1 {
 }
 div#root {
     width: 100%;
-    background: #fff;
+    background:#F5F6F8;
     min-height: 100vh;
     display: flex;
     justify-content: center;
 }
 
 div#root div.centerWrapper {
-    background: whitesmoke;
-    width: 100%;
-    max-width: 1000px;
+    width: 1440px;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
 }
@@ -20,5 +18,8 @@ div#root div.centerWrapper {
 div#root div.centerWrapper > main {
     padding: 30px 0;
     width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 0 20px;
 }
 

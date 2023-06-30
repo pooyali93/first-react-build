@@ -70,12 +70,12 @@ function MyModules() {
         <section>
             <h1>My Modules</h1>
             
-            <div className="listOfFavourite">
+            {/* <div className="listOfFavourite">
                 <div className="actions">
                     <button><FaList/></button>
                     <button  onClick={handleModal} ><FaPlus/> Add</button>
                 </div>
-            </div>
+            </div> */}
            {showModalForm ? <AddModuleForm onAdd={handleAddModule} onCancel={handleModal} />: null }
 
             <ModuleList modules={modules} onDelete={handleDelete} onChange={handleUpdate} onFavourite={handleFavourite} onUnfavourite={handleUnfavourite} />
